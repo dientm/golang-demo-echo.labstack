@@ -1,8 +1,7 @@
-/* BookRepository.go
-* manupilate database
-*/
+/* BookRepository */
+/* Using to manipulate database */
 
-package bookrepository
+package repository
 
 import "com.dientm.bookstore/beans"
 

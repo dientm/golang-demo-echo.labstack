@@ -21,7 +21,7 @@ func NewBook(title string, author string, desc string, publishDate string) (b Bo
 	b.PublishDate = publishDate
 	return
 }
-
+/* temp method: print out to test */
 func (b Book) GetTitle() string {
 	return b.Title
 }

@@ -1,4 +1,4 @@
-/** BookService **/
+/** BookStore **/
 
 package beans
 
@@ -27,7 +27,6 @@ func NewBookStore(name string) (bs BookStore) {
 }
 
 func (bs *BookStore) ExtendSize() {
-	
 	l := len(bs.Books)
 	newarray := make([]Book, l * 2)
 	copy(newarray, bs.Books[:])

@@ -21,6 +21,7 @@ func main() {
 	tikiBook.InitBookStoreData();
 	var bookservice service.BookStoreService
 
+	/* URL ex: localhost:PORT/book/tiki */
 	e.GET("/book/:id", func(c echo.Context) error {
 		id := c.Param("id")
 		switch {
@@ -32,7 +33,11 @@ func main() {
 		return bookservice.ListBook(c)
 	})
 
+	/* body ex: 
+		{"storeId":"tiki","title":"Life of DienTM", "desc":"This is the book of my life", "pubDate":"25/03/2040"}
 
+		this string is still not work with POST method, need to update
+	*/
 	e.POST("/save", func(c echo.Context) error {
 		storeId := c.FormValue("storeId")
 		title := c.FormValue("title")
@@ -46,10 +51,6 @@ func main() {
 			bookservice = service.NewBookStoreService(tikiBook)
 		}
 		return bookservice.AddBookToStore(c, title, author, desc, pubDate)
-/* test
-{"storeId":"tiki","title":"Life of DienTM", "desc":"This is the book of my life", "pubDate":"25/03/2040"}
-*/
-
 	})
 
 
@@ -57,3 +58,5 @@ func main() {
 	e.Run(standard.New(SERVER_PORT))
 
 }
+
+// TODO: move HandlderFunc to other file
